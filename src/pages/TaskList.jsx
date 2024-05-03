@@ -1,23 +1,25 @@
 import { useEffect, useRef, useState } from "react";
+import { Task } from "../components/Task.jsx";
+import { getTasks } from "../services/task.service.js";
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [inputvalue, setInputValue] = useState('');
   const node = useRef(null);
 
-  // console.log(node.current);
-
   useEffect(() => {
-    
-    console.log(inputvalue);
-  }, []);
+    getTasks()
+      .then((data) => {
+        setTasks(data);
+      });
+  }, [inputvalue]);
+
+  
   
   return (
     <div>
       <h1>Task List</h1>
-      <input type="text" ref={node} onChange={(e) => {
-        setInputValue(e.target.value);
-      }}/>
+      <Task tasks={tasks} />
     </div>
   );
 };
