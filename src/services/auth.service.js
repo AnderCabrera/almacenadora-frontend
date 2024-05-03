@@ -39,7 +39,7 @@ export const login = (body) => {
       }
     })
     .catch((error) => {
-      console.error('Error: ', error);
+      return error;
     });
 };
 
