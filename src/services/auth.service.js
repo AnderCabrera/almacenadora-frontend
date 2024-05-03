@@ -57,18 +57,40 @@ export const logout = () => {
 };
 
 export const register = (body) => {
-  fetch('http://localhost:2880/users/register', {
+  let myInit = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
+  };
+
+  fetch('http://localhost:2880/users/register', myInit)
+    .then((response) => {
+      if (response.ok) {
+        ReactSwal.fire({
+          title: 'Success',
+          text: 'Register successful',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+          willOpen: () => {
+            ReactSwal.showLoading();
+          },
+        }).then(() => {
+          window.location.href = '/login';
+        });
+        return response.json();
+      } else {
+        ReactSwal.fire({
+          title: 'Register failed',
+          text: 'Something goes wrong',
+          icon: 'error',
+          confirmButtonText: 'Try again',
+        });
+      }
     })
     .catch((error) => {
-      console.error('Error:', error);
+      return error;
     });
 };
