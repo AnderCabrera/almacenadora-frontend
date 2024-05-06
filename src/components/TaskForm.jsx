@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { addTask } from '../services/task.service.js';
 import * as jose from 'jose';
-// import 'dotenv/config'
 
 export const TaskForm = ({ onTaskAdded }) => {
   const [formData, setFormData] = useState({
@@ -12,16 +12,15 @@ export const TaskForm = ({ onTaskAdded }) => {
     taskStatus: false,
   });
 
-  const { taskName, taskDescription, dateStart, dateEnd, taskStatus } =
-    formData;
+  const { taskName, taskDescription, dateStart, dateEnd, taskStatus } = formData;
   const token = localStorage.getItem('token');
   const decoded = jose.decodeJwt(token);
-
+  
   useEffect(() => {
     const select = document.getElementById('taskStatus');
     const greenBg = 'bg-green-500';
     const redBg = 'bg-red-500';
-
+    
     if (taskStatus) {
       select.classList.remove(redBg);
       select.classList.add(greenBg);
@@ -40,32 +39,36 @@ export const TaskForm = ({ onTaskAdded }) => {
       date_end: new Date(dateEnd),
       task_status: taskStatus,
       user: decoded.id,
-    }).then((data) => {
-      console.log(data);
+    }).then(() => {
       onTaskAdded();
+      setFormData({
+        taskName: '',
+        taskDescription: '',
+        dateStart: '',
+        dateEnd: '',
+        taskStatus: false,
+      });
     });
   };
-
+  
   const changeHandler = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
-
+    
     if (e.target.id === 'taskStatus') {
       setFormData({
         ...formData,
         [e.target.id]: e.target.value === 'true',
       });
     }
-
-    console.log(formData);
   };
-
+  
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#555] shadow-lg rounded p-4 mb-4 w-[80%]"
+      className="bg-[#333] shadow-lg rounded p-4 mb-4 w-[50%]"
     >
       <div className="mb-4">
         <label
@@ -80,6 +83,7 @@ export const TaskForm = ({ onTaskAdded }) => {
           type="text"
           placeholder="Task Name"
           onChange={changeHandler}
+          value={taskName}
         />
       </div>
       <div className="mb-4">
@@ -94,6 +98,7 @@ export const TaskForm = ({ onTaskAdded }) => {
           id="taskDescription"
           placeholder="Task Description"
           onChange={changeHandler}
+          value={taskDescription}
         />
       </div>
       <div className="mb-4">
@@ -109,6 +114,7 @@ export const TaskForm = ({ onTaskAdded }) => {
           type="date"
           placeholder="Date Start"
           onChange={changeHandler}
+          value={dateStart}
         />
       </div>
       <div className="mb-4">
@@ -124,6 +130,7 @@ export const TaskForm = ({ onTaskAdded }) => {
           type="date"
           placeholder="Date End"
           onChange={changeHandler}
+          value={dateEnd}
         />
       </div>
       <div className="mb-6 flex flex-col">
@@ -139,6 +146,7 @@ export const TaskForm = ({ onTaskAdded }) => {
           className={
             'border rounded py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline'
           }
+          value={taskStatus}
         >
           <option value="false" className="bg-red-400">
             Not Done

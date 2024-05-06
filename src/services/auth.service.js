@@ -20,7 +20,7 @@ export const login = async (body) => {
           text: 'Login successful',
           icon: 'success',
           showConfirmButton: false,
-          // timer: 1500,
+          timer: 1500,
           willOpen: () => {
             ReactSwal.showLoading();
           },
