@@ -3,7 +3,7 @@ import withReactContent from 'sweetalert2-react-content';
 
 const ReactSwal = withReactContent(Swal);
 
-export const login = (body) => {
+export const login = async (body) => {
   let myInit = {
     method: 'POST',
     headers: {
@@ -12,7 +12,7 @@ export const login = (body) => {
     body: JSON.stringify(body),
   };
 
-  fetch('http://localhost:2880/users/login', myInit)
+  return fetch('http://localhost:2880/users/login', myInit)
     .then((response) => {
       if (response.ok) {
         ReactSwal.fire({
@@ -44,16 +44,7 @@ export const login = (body) => {
 };
 
 export const logout = () => {
-  fetch('http://localhost:2880/users/logout', {
-    method: 'POST',
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  localStorage.removeItem('token');
 };
 
 export const register = (body) => {
