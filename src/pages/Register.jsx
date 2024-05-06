@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { register } from "../services/auth.service.js";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import '../output.css';
 
 export const Register = () => {
-
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     name: '',
     lastname: ''
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      navigate('/tasks');
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
