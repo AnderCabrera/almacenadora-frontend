@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../services/auth.service.js';
 import '../output.css';
 
@@ -36,11 +36,11 @@ export const Login = () => {
   }
 
   return (
-    <div className="main m-0 p-0 bg-[#222] flex justify-center">
+    <div className="main m-0 p-0 bg-[#111] flex justify-center">
       <div className="container">
         <div className="flex justify-center items-center h-screen">
           <div className="w-full max-w-md">
-            <form onSubmit={handleLogin} className="bg-[#555] shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleLogin} className="bg-[#222] shadow-lg rounded px-8 pt-6 pb-8 mb-4">
               <div className="mb-4">
                 <label
                   className="block text-white text-sm font-bold mb-2"
@@ -77,6 +77,9 @@ export const Login = () => {
                 >
                   Sign In
                 </button>
+                {/* add a Link to the /register route with the text "don't have any account yet?" with a good tailwind style*/}
+                <Link to="/register" className="text-white hover:text-gray-300"><span>Don&apos;t have any account yet?</span></Link>
+                
               </div>
             </form>
           </div>
