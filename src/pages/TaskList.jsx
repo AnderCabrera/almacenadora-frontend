@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Task } from '../components/Task.jsx';
 import { TaskForm } from '../components/TaskForm.jsx';
-import { getTasks, getTask, deleteTask } from '../services/task.service.js';
+import { Navbar } from '../components/Navbar.jsx';
 import { UpdateModal } from '../components/UpdateModal.jsx';
+import { getTasks, getTask, deleteTask } from '../services/task.service.js';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import withReactContent from 'sweetalert2-react-content';
 import '../output.css'; 
@@ -84,7 +85,7 @@ export const TaskList = () => {
 
   return (
     <div className="bg-[#111]">
-      <h1>Task List</h1>
+      <Navbar />
       <div className="task-form-container w-full flex flex-col items-center">
         <TaskForm onTaskAdded={handleTaskAdded} />
       </div>

@@ -68,7 +68,7 @@ export const TaskForm = ({ onTaskAdded }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#333] shadow-lg rounded p-4 mb-4 w-[50%]"
+      className="bg-[#333] shadow-lg rounded p-4 mb-6 w-[50%]"
     >
       <div className="mb-4">
         <label
