@@ -23,9 +23,5 @@ export const routes = [
   {
     path: '/tasks',
     element: <TaskList />,
-    children: [
-      { path: '/tasks/content1', element: <Login /> },
-      { path: '/tasks/content2', element: <Register /> },
-    ],
   },
 ];
