@@ -4,8 +4,6 @@ import { logout } from "../services/auth.service";
 export const Navbar = () => {
 
   return (
-    // create a navbar with tailwindcss dark mode with the following links:
-    // Home and Logout
     <nav className="bg-gray-800 shadow-lg mb-6">
       <div className="container mx-auto px-6 py-3">
         <div className="md:flex md:items-center md:justify-between">

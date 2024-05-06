@@ -77,7 +77,6 @@ export const Login = () => {
                 >
                   Sign In
                 </button>
-                {/* add a Link to the /register route with the text "don't have any account yet?" with a good tailwind style*/}
                 <Link to="/register" className="text-white hover:text-gray-300"><span>Don&apos;t have any account yet?</span></Link>
                 
               </div>
