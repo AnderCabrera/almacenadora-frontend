@@ -78,7 +78,6 @@ export const Login = () => {
                   Sign In
                 </button>
                 <Link to="/register" className="text-white hover:text-gray-300"><span>Don&apos;t have any account yet?</span></Link>
-                
               </div>
             </form>
           </div>

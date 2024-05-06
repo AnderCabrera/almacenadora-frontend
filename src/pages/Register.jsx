@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { register } from "../services/auth.service.js";
+import { Link } from "react-router-dom";
 import '../output.css';
 
 export const Register = () => {
@@ -29,11 +30,11 @@ export const Register = () => {
   }
 
   return (
-    <div className="main m-0 p-0 bg-[#222] flex justify-center">
+    <div className="main m-0 p-0 bg-[#111] flex justify-center">
       <div className="container">
         <div className="flex justify-center items-center h-screen">
           <div className="w-full max-w-md">
-            <form onSubmit={handleRegister} className="bg-[#555] shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleRegister} className="bg-[#222] shadow-lg rounded px-8 pt-6 pb-8 mb-4">
               <div className="mb-4">
                 <label
                   className="block text-white text-sm font-bold mb-2"
@@ -100,6 +101,7 @@ export const Register = () => {
                 >
                   Register
                 </button>
+                <Link to="/login" className="text-white hover:text-gray-300"><span>Already have an account?</span></Link>
               </div>
             </form>
           </div>
