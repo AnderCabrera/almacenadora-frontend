@@ -4,7 +4,7 @@ import '../output.css';
 export const Task = ({ tasks, updateHandler, deleteHandler }) => {
   return (
     <>
-      <table className="table-auto w-[80%] justify-center">
+      <table className="table-auto w-[80%] justify-center border ">
         <thead className="">
           <tr className="bg-slate-900">
             <th className="border border-solid border-white text-white">

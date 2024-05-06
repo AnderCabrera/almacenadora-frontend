@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth.service.js';
 import '../output.css';
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      // navigate('/tasks');
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,7 +30,9 @@ export const Login = () => {
     login({
       username: formData.username,
       password: formData.password,
-    });
+    }).then((data) => {
+      localStorage.setItem('token', data.token);
+    })
   }
 
   return (
