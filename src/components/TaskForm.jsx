@@ -12,15 +12,16 @@ export const TaskForm = ({ onTaskAdded }) => {
     taskStatus: false,
   });
 
-  const { taskName, taskDescription, dateStart, dateEnd, taskStatus } = formData;
+  const { taskName, taskDescription, dateStart, dateEnd, taskStatus } =
+    formData;
   const token = localStorage.getItem('token');
   const decoded = jose.decodeJwt(token);
-  
+
   useEffect(() => {
     const select = document.getElementById('taskStatus');
     const greenBg = 'bg-green-500';
     const redBg = 'bg-red-500';
-    
+
     if (taskStatus) {
       select.classList.remove(redBg);
       select.classList.add(greenBg);
@@ -50,13 +51,13 @@ export const TaskForm = ({ onTaskAdded }) => {
       });
     });
   };
-  
+
   const changeHandler = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
-    
+
     if (e.target.id === 'taskStatus') {
       setFormData({
         ...formData,
@@ -64,7 +65,7 @@ export const TaskForm = ({ onTaskAdded }) => {
       });
     }
   };
-  
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -157,9 +158,7 @@ export const TaskForm = ({ onTaskAdded }) => {
         </select>
       </div>
       <div className="flex items-center justify-between">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Add Task
         </button>
       </div>

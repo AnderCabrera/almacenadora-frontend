@@ -7,27 +7,13 @@ export const Task = ({ tasks, updateHandler, deleteHandler }) => {
       <table className="table-auto w-[75%] justify-center border mb-10">
         <thead className="">
           <tr className="bg-slate-900">
-            <th className="text-white">
-              Task Name
-            </th>
-            <th className="text-white">
-              Task Description
-            </th>
-            <th className="text-white">
-              Date Start
-            </th>
-            <th className="text-white">
-              Date End
-            </th>
-            <th className="text-white">
-              Task Status
-            </th>
-            <th className="text-white">
-              User
-            </th>
-            <th className="text-white">
-              Actions
-            </th>
+            <th className="text-white">Task Name</th>
+            <th className="text-white">Task Description</th>
+            <th className="text-white">Date Start</th>
+            <th className="text-white">Date End</th>
+            <th className="text-white">Task Status</th>
+            <th className="text-white">User</th>
+            <th className="text-white">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +35,9 @@ export const Task = ({ tasks, updateHandler, deleteHandler }) => {
                     <span className="text-red-600">Incomplete</span>
                   )}
                 </td>
-                <td>{task.user.name} {task.user.lastname}</td>
+                <td>
+                  {task.user.name} {task.user.lastname}
+                </td>
                 <td>
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded m-1"

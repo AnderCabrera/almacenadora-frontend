@@ -6,7 +6,7 @@ import { UpdateModal } from '../components/UpdateModal.jsx';
 import { getTasks, getTask, deleteTask } from '../services/task.service.js';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import withReactContent from 'sweetalert2-react-content';
-import '../output.css'; 
+import '../output.css';
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -14,7 +14,6 @@ export const TaskList = () => {
   const [task, setTask] = useState({});
   const ReactSwal = withReactContent(Swal);
 
-  
   useEffect(() => {
     getTasks().then((data) => {
       setTasks(data);
@@ -37,7 +36,7 @@ export const TaskList = () => {
 
   const handleTaskUpdated = (e) => {
     const taskId = e.target.closest('tr').id;
-    
+
     getTask(taskId).then((data) => {
       setTask(data);
       setShowModal(true);
@@ -46,7 +45,7 @@ export const TaskList = () => {
 
   const handleTaskDeleted = (e) => {
     const taskId = e.target.closest('tr').id;
-    
+
     deleteTask(taskId).then((data) => {
       if (data) {
         getTasks().then((data) => {
@@ -80,8 +79,7 @@ export const TaskList = () => {
       showConfirmButton: false,
       timer: 1500,
     });
-  }
-  
+  };
 
   return (
     <div className="bg-[#111]">
