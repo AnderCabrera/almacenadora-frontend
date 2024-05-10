@@ -27,7 +27,7 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    login({
+    login ({
       username: formData.username,
       password: formData.password,
     }).then((data) => {
